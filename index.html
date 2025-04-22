@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot Deportes</title>
+<style>
+body {
+background-color: lightblue; /* Fondo de la pantalla en celeste claro */
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+.carousel {
+width: 80%;
+margin: auto;
+overflow: hidden;
+position: relative;
+}
+.carousel-images {
+display: flex;
+transition: transform 0.5s ease-in-out;
+}
+.carousel-images img {
+width: 100%;
+flex-shrink: 0;
+}
+.carousel-button {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background-color: rgba(0, 0, 0, 0.5);
+color: white;
+border: none;
+font-size: 2rem;
+cursor: pointer;
+padding: 10px;
+}
+.carousel-button.left {
+left: 10px;
+}
+.carousel-button.right {
+right: 10px;
+}
+</style>
+</head>
+<body>
+<!-- Navbar -->
+<nav style="background-color: lightblue; padding: 10px;">
+<ul style="list-style: none; display: flex; justify-content: space-around; margin: 0; padding: 0;">
+<li><a href="#inicio" style="text-decoration: none; color: white;">Inicio</a></li>
+<li><a href="#deportes" style="text-decoration: none; color: white;">Deportes</a></li>
+<li><a href="#contacto" style="text-decoration: none; color: white;">Contacto</a></li>
+</ul>
+</nav>
+
+<!-- Carrusel -->
+<div class="carousel">
+<div class="carousel-images" id="carouselImages">
+<img src="file:///home/Quinto_Año/Documentos/ANA_OTAIZA/CLASE 8/Imagenes/basquet2.png" alt="Basquet">
+<img src="file:///home/Quinto_Año/Documentos/ANA_OTAIZA/CLASE 8/Imagenes/Futbol2.jpg" alt="Fútbol">
+<img src="file:///home/Quinto_Año/Documentos/ANA_OTAIZA/CLASE 8/Imagenes/voley2.jpg" alt="Vóley">
+</div>
+<button class="carousel-button left" onclick="prevSlide()">&#9664;</button>
+<button class="carousel-button right" onclick="nextSlide()">&#9654;</button>
+</div>
+<script>
+let currentSlide = 0;
+
+function showSlide(index) {
+const carouselImages = document.getElementById("carouselImages");
+const totalImages = carouselImages.children.length;
+if (index >= totalImages) currentSlide = 0;
+else if (index < 0) currentSlide = totalImages - 1;
+else currentSlide = index;
+const offset = -currentSlide * 100; // Desplaza el carrusel
+carouselImages.style.transform = `translateX(${offset}%)`;
+}
+
+function prevSlide() {
+showSlide(currentSlide - 1);
+}
+
+function nextSlide() {
+showSlide(currentSlide + 1);
+}
+
+// Inicializa el carrusel mostrando la primera imagen
+document.addEventListener("DOMContentLoaded", () => {
+showSlide(currentSlide);
+});
+</script>
+
+<!-- Tarjetas -->
+<div style="display: flex; justify-content: space-around; margin: 20px auto; width: 80%;">
+<div style="background-color: orange; padding: 10px; border-radius: 8px; text-align: center;">
+<img src="file:///home/Quinto_Año/Documentos/ANA_OTAIZA/CLASE 8/Imagenes/basquet.jpg" alt="Basquet" style="width: 150px; height: 150px; border-radius: 8px;">
+<p style="font-style: italic; color: red;">El baloncesto inspira trabajo en equipo.</p>
+</div>
+<div style="background-color: lightblue; padding: 10px; border-radius: 8px; text-align: center;">
+<img src="file:///home/Quinto_Año/Documentos/ANA_OTAIZA/CLASE 8/Imagenes/futbol.jpg" alt="Fútbol" style="width: 150px; height: 150px; border-radius: 8px;">
+<p style="font-style: italic; color: red;">El fútbol une culturas.</p>
+</div>
+<div style="background-color: lightgreen; padding: 10px; border-radius: 8px; text-align: center;">
+<img src="file:///home/Quinto_Año/Documentos/ANA_OTAIZA/CLASE 8/Imagenes/voley.jpeg" alt="Vóley" style="width: 150px; height: 150px; border-radius: 8px;">
+<p style="font-style: italic; color: red;">El vóley fomenta la confianza.</p>
+</div>
+</div>
+
+<!-- Pie de página -->
+<footer style="background: linear-gradient(to right, red, yellow, blue, green, purple); padding: 15px; text-align: center; color: gold; font-weight: bold; text-shadow: 0 0 8px gold;">
+<p style="font-style: italic;">"El deporte alimenta el alma y fortalece el corazón."</p>
+</footer>
+</body>
+</html>
